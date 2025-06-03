@@ -354,17 +354,15 @@ print(f"{BLUE}- Charisme: {YELLOW}{cha_p}{RESET}  {BLUE}({YELLOW}{mod_cha_p}{BLU
 print(f"{BLUE}- Points de vie: {YELLOW}{hp_p}{RESET}")
 
 ### Bonus 1
-
-vit_p = 0
-init_p = 0
-mait_p = 0
-poids_p = 0
-taille_p = 0
-eyes_p = "<EYES>"
-
-imc_p = 0
-inter_imc_p = "void"
-
+print_boxed("Caractéristiques complémentaires:")
+print(f"{BLUE}Votre vitesse: {YELLOW}{vit_p} année lumière{RESET} ")
+print(f"{BLUE}Votre initiative: {YELLOW}{init_p} points d'initiativité {RESET} ")
+print(f"{BLUE}Votre bonus de maîtrise: {YELLOW}{mait_p} points {RESET} ")
+print(f"{BLUE}Couleur de vos yeux: {YELLOW}{eyes_p} {RESET} ")
+print(f"{BLUE}Poids: {YELLOW}{poids_p} kg{RESET} ")
+print(f"{BLUE}Taille: {YELLOW}{taille_p} cm {RESET}")
+print(f"{BLUE}IMC: {YELLOW} {imc_p} {RESET}")
+print(f"{BLUE}Interprétation: {YELLOW} {inter_imc_p}{RESET}")
 ### Bonus 1/
 
 
@@ -372,9 +370,9 @@ inter_imc_p = "void"
 if mod_con_p == 0:
     pass
 elif mod_con_p > 0:
-    print(f"{BLUE}- BONUS: {YELLOW}+{mod_con_p}")
+    print(f"{BLUE}BONUS: {YELLOW}+{mod_con_p}")
 else:
-    print(f"{BLUE}- MALUS: {YELLOW}-{mod_con_p}")
+    print(f"{BLUE}MALUS: {YELLOW}{mod_con_p}")
 ### Bonus 2/
 
 
@@ -393,3 +391,8 @@ else:
 
 print(f"{BLUE}Alignement: {YELLOW} {alignment} {RESET}")
 print("-------------------------------")
+
+print_boxed("C'était un voyage vraiment intéressant, merci pour votre attention")
+print_boxed("Bonne chance à vous")
+
+
