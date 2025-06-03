@@ -25,7 +25,7 @@ BOLD = '\033[1m'
 RESET = '\033[0m'
 
 
-def slow_print(text, delay=0.01):
+def slow_print(text, delay=0.005):
     for char in text:
         print(char, end='', flush=True)
         time.sleep(delay)
@@ -161,7 +161,7 @@ while True:
         break
     elif choice == 6:
         class_p = random.choice(classes)
-        print(f"J'ai choisi la classe{BLUE}{class_p}{RESET} pour vous")
+        print(f"J'ai choisi la classe {BLUE}{class_p}{RESET} pour vous")
         break
     else:
         print(f"{RED}Ce n'est pas entre 1 et 6{RESET}")
@@ -302,7 +302,7 @@ print(f"{BLUE}Lancés:{RESET}", end=" ")
 for i in range(0, level_p):
     rand_number = random.randrange(0, 5)
     boost += rand_number
-    print(rand_number, end=" ", flush=True)
+    print(YELLOW, rand_number, end=" ", flush=True)
     time.sleep(0.2)
 
 hp_p += boost
@@ -372,9 +372,9 @@ inter_imc_p = "void"
 if mod_con_p == 0:
     pass
 elif mod_con_p > 0:
-    print(f"   BONUS: +{mod_con_p}")
+    print(f"{BLUE}- BONUS: {YELLOW}+{mod_con_p}")
 else:
-    print(f"   MALUS: {mod_con_p}")
+    print(f"{BLUE}- MALUS: {YELLOW}-{mod_con_p}")
 ### Bonus 2/
 
 
@@ -391,5 +391,5 @@ if align_ordre == "Neutre" and align_morale == "Neutre":
 else:
     alignment = f"{align_ordre} {align_morale}"
 
-print(f"Alignement : {alignment}")
+print(f"{BLUE}Alignement: {YELLOW} {alignment} {RESET}")
 print("-------------------------------")
