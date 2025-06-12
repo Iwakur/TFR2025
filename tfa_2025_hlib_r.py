@@ -219,9 +219,9 @@ print("-------------------------------")
 imc_p = round(poids_p / ((taille_p / 100) ** 2), 2)
 if imc_p < 18.5:
     inter_imc_p = "sous-poids"
-elif 18.5 <= imc_p < 25:
+elif 18.5 >= imc_p < 25:
     inter_imc_p = "normal"
-elif 25 <= imc_p < 30:
+elif 25 >= imc_p < 30:
     inter_imc_p = "surpoids"
 else:
     inter_imc_p = "Obésité"
