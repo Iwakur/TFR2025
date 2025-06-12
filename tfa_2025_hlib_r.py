@@ -24,6 +24,8 @@ MAGENTA = '\033[95m'
 BOLD = '\033[1m'
 RESET = '\033[0m'
 
+def mod_calc(valeur):
+    return math.floor((valeur - 10) / 2)
 
 def slow_print(text, delay=0.005):
     for char in text:
@@ -216,12 +218,14 @@ eyes_p = random.choice(couleurs_yeux)
 
 print("-------------------------------")
 
+#Examen seconde point, samplification de l'IMC 
+
 imc_p = round(poids_p / ((taille_p / 100) ** 2), 2)
 if imc_p < 18.5:
     inter_imc_p = "sous-poids"
-elif 18.5 >= imc_p < 25:
+elif imc_p < 25:
     inter_imc_p = "normal"
-elif 25 >= imc_p < 30:
+elif imc_p < 30:
     inter_imc_p = "surpoids"
 else:
     inter_imc_p = "Obésité"
@@ -237,12 +241,15 @@ print("-------------------------------")
 # Token: CIPAB/UGOLA/TALOH*
 ########################################################################################
 
-mod_for_p = math.floor((for_p - 10) / 2)
-mod_dex_p = math.floor((dex_p - 10) / 2)
-mod_con_p = math.floor((con_p - 10) / 2)
-mod_int_p = math.floor((int_p - 10) / 2)
-mod_sag_p = math.floor((sag_p - 10) / 2)
-mod_cha_p = math.floor((cha_p - 10) / 2)
+#Examen premiere point, creation de la fonction mod_calc(check initialisation for def)
+
+
+mod_for_p = mod_calc(for_p)
+mod_dex_p = mod_calc(dex_p)
+mod_con_p = mod_calc(con_p)
+mod_int_p = mod_calc(int_p)
+mod_sag_p = mod_calc(sag_p)
+mod_cha_p = mod_calc(cha_p)
 print(f"Votre modificateur de {BOLD}la Force {RESET}est {YELLOW}{mod_for_p}{RESET}")
 print(f"Votre modificateur de {BOLD}la Dextérité {RESET}est {YELLOW} {mod_dex_p}{RESET}")
 print(f"Votre modificateur de {BOLD}la Constitution{RESET} est {YELLOW}{mod_con_p}{RESET}")
@@ -297,14 +304,15 @@ hp_p = level_p * 8 + mod_con_p + random.randrange(1, 5)
 print(f"Points de {BLUE}vie:{YELLOW} {hp_p}{RESET}")
 
 ##### Bonus
+#Examen troisieme point, correction de boost de PV (originally it was said to verify the *lances* of the dice for basic hp, but there was no problem, so i found one during verifying the bonus)
 boost = 0
 print(f"{BLUE}Lancés:{RESET}", end=" ")
-for i in range(0, level_p):
-    rand_number = random.randrange(0, 5)
-    boost += rand_number
+lancers = [random.randrange(1, 5) for _ in range(level_p)]
+for rand_number in lancers:
     print(YELLOW, rand_number, end=" ", flush=True)
     time.sleep(0.2)
-
+boost = sum(lancers)
+#Examen quatrieme point, the optimization of the bonus hp 
 hp_p += boost
 print("   ")
 print(f"{BLUE}Resultat:{RESET} {boost} -> PV = {YELLOW}{hp_p} {RESET}")
